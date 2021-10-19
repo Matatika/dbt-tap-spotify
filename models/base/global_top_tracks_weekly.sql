@@ -10,11 +10,18 @@ artist_name_list as (
     from global_top_tracks_weekly gttw, jsonb_to_recordset(gttw.artists) as items(name text)
     group by id
 ),
+artist_name_list_to_string as (
+    select
+        id
+        , string_agg(artist_name_string, ', ') as artist_name
+    from artist_name_list, jsonb_array_elements_text(artist_name::jsonb) artist_name_string
+    group by id
+),
 final as (
     select
         gttw.id as track_id
         , name as track_name
-        , artist_name_list.artist_name as artist_name
+        , artist_name_list_to_string.artist_name as artist_name
         , album__album_type as type
         , album__name as album_name
         , popularity as popularity
@@ -27,6 +34,6 @@ final as (
         else null end as release_date
         , album__release_date_precision as album_release_date_precision
     from global_top_tracks_weekly gttw
-    left join artist_name_list on artist_name_list.id = gttw.id
+    left join artist_name_list_to_string on artist_name_list_to_string.id = gttw.id
 )
 select * from final
