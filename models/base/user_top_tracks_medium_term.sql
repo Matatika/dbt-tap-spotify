@@ -25,6 +25,7 @@ final as (
         when album__release_date_precision = 'month' then to_date(album__release_date::text, 'yyyy-mm')
         when album__release_date_precision = 'year' then to_date(album__release_date::text, 'yyyy')
         else null end as release_date
+        , album__release_date_precision as album_release_date_precision
     from user_top_tracks_medium_term utt
     left join artist_name_list on artist_name_list.id = utt.id
 )
