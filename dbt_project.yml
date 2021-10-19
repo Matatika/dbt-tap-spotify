@@ -1,0 +1,23 @@
+name: 'tap_spotify'
+version: '0.0.1'
+
+config-version: 2
+
+profile: local
+
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+target-path: "target"
+clean-targets: ["target"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+models:
+  tap_spotify:
+    base:
+      materialized: table
+      
+vars:
+  schema: "{{ env_var('TARGET_POSTGRES_SCHEMA') }}" # the schema where the raw Spotify tables are located

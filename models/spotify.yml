@@ -1,0 +1,126 @@
+
+version: 2
+
+sources:
+  - name: spotify
+    schema: "{{ env_var('TARGET_POSTGRES_SCHEMA') }}"
+    description: Data sync'd from Spotify.
+    tables:
+      - name: user_top_tracks_st_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: user_top_tracks_mt_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: user_top_tracks_lt_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: user_top_artists_st_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: user_top_artists_mt_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: user_top_artists_lt_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: global_top_tracks_daily_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: global_top_tracks_weekly_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: global_viral_tracks_daily_stream
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+models:
+  - name: user_top_tracks_short_term
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: user_top_tracks_medium_term
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: user_top_tracks_long_term
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: global_viral_tracks_daily
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: global_top_tracks_daily
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: global_top_tracks_weekly
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: user_top_artists_short_term
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: user_top_artists_medium_term
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+  - name: user_top_artists_long_term
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
