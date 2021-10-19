@@ -16,6 +16,7 @@ snapshot-paths: ["snapshots"]
 
 models:
   tap_spotify:
+    +full_refresh: true
     base:
       materialized: table
       
