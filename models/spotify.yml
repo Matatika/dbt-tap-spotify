@@ -76,11 +76,17 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        tests:
+          - not_null
   - name: user_top_tracks_medium_term
     columns:
       - name: track_id
         tests:
           - unique
+          - not_null
+      - name: artist_name
+        tests:
           - not_null
   - name: user_top_tracks_long_term
     columns:
@@ -88,11 +94,17 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        tests:
+          - not_null
   - name: global_viral_tracks_daily
     columns:
       - name: track_id
         tests:
           - unique
+          - not_null
+      - name: artist_name
+        tests:
           - not_null
   - name: global_top_tracks_daily
     columns:
@@ -100,27 +112,33 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        tests:
+          - not_null
   - name: global_top_tracks_weekly
     columns:
       - name: track_id
         tests:
           - unique
           - not_null
+      - name: artist_name
+        tests:
+          - not_null
   - name: user_top_artists_short_term
     columns:
-      - name: track_id
+      - name: artist_id
         tests:
           - unique
           - not_null
   - name: user_top_artists_medium_term
     columns:
-      - name: track_id
+      - name: artist_id
         tests:
           - unique
           - not_null
   - name: user_top_artists_long_term
     columns:
-      - name: track_id
+      - name: artist_id
         tests:
           - unique
           - not_null
