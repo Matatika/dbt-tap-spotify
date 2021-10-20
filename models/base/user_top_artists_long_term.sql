@@ -1,11 +1,15 @@
 {{ config(materialized='table') }}
 
 with user_top_artists_long_term as (
-    select * from "{{var('schema')}}".user_top_artists_lt_stream
+    select
+        * 
+    from "{{var('schema')}}".user_top_artists_lt_stream
+    where synced_at = (select max(synced_at) from "{{var('schema')}}".global_top_tracks_daily_stream)
 ),
 final as (
     select
         id as artist_id
+        , rank as rank
         , name as artist_name
         , genres as genres
         , popularity as popularity

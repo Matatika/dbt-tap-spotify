@@ -1,7 +1,10 @@
 {{ config(materialized='table') }}
 
 with global_top_tracks_daily as (
-    select * from "{{var('schema')}}".global_top_tracks_daily_stream
+    select 
+        * 
+    from "{{var('schema')}}".global_top_tracks_daily_stream
+    where synced_at = (select max(synced_at) from "{{var('schema')}}".global_top_tracks_daily_stream)
 ),
 artist_name_list as (
     select
@@ -19,7 +22,8 @@ artist_name_list_to_string as (
 ),
 final as (
     select
-        gttw.id as track_id
+        rank as rank
+        , gttw.id as track_id
         , name as track_name
         , artist_name_list_to_string.artist_name as artist_name
         , album__album_type as type
