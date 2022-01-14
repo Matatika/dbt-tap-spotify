@@ -5,5 +5,5 @@ select
     count(*)
 from {{ ref('user_top_artists_long_term') }}
 having count(*) != (select count(*)
-                    from {{ env_var('TARGET_POSTGRES_SCHEMA') }}.user_top_artists_lt_stream
-                    where synced_at = (select max(synced_at) from {{ env_var('TARGET_POSTGRES_SCHEMA') }}.user_top_artists_lt_stream))
+                    from {{ env_var('DBT_TARGET_SCHEMA') }}.user_top_artists_lt_stream
+                    where synced_at = (select max(synced_at) from {{ env_var('DBT_TARGET_SCHEMA') }}.user_top_artists_lt_stream))

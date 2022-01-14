@@ -5,5 +5,5 @@ select
     count(*)
 from {{ ref('global_viral_tracks_daily') }}
 having count(*) != (select count(*)
-                    from {{ env_var('TARGET_POSTGRES_SCHEMA') }}.global_viral_tracks_daily_stream
-                    where synced_at = (select max(synced_at) from {{ env_var('TARGET_POSTGRES_SCHEMA') }}.global_viral_tracks_daily_stream))
+                    from {{ env_var('DBT_TARGET_SCHEMA') }}.global_viral_tracks_daily_stream
+                    where synced_at = (select max(synced_at) from {{ env_var('DBT_TARGET_SCHEMA') }}.global_viral_tracks_daily_stream))

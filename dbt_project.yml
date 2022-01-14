@@ -1,5 +1,5 @@
-name: 'tap_spotify'
-version: '0.0.1'
+name: "tap_spotify"
+version: "0.0.1"
 
 config-version: 2
 
@@ -19,6 +19,6 @@ models:
     +full_refresh: true
     base:
       materialized: table
-      
+
 vars:
-  schema: "{{ env_var('TARGET_POSTGRES_SCHEMA') }}" # the schema where the raw Spotify tables are located
+  schema: "{{ env_var('DBT_TARGET_SCHEMA') }}" # the schema where the raw Spotify tables are located

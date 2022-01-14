@@ -1,9 +1,8 @@
-
 version: 2
 
 sources:
   - name: spotify
-    schema: "{{ env_var('TARGET_POSTGRES_SCHEMA') }}"
+    schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
     description: Data sync'd from Spotify.
     tables:
       - name: user_top_tracks_st_stream
