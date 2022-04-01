@@ -3,8 +3,8 @@
 with global_viral_tracks_daily as (
     select
         * 
-    from "{{var('schema')}}".global_viral_tracks_daily_stream
-    where synced_at = (select max(synced_at) from "{{var('schema')}}".global_top_tracks_daily_stream)
+    from {{ source('spotify_source', 'global_viral_tracks_daily_stream')}}
+    where synced_at = (select max(synced_at) from {{ source('spotify_source', 'global_viral_tracks_daily_stream')}})
 ),
 artist_name_list_to_string as (
     {{ artist_array_pivot('global_viral_tracks_daily') }}

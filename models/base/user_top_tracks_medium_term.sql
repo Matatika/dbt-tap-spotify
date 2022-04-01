@@ -2,9 +2,9 @@
 
 with user_top_tracks_medium_term as (
     select
-        *
-    from "{{var('schema')}}".user_top_tracks_mt_stream
-    where synced_at = (select max(synced_at) from "{{var('schema')}}".global_top_tracks_daily_stream)
+        * 
+    from {{ source('spotify_source', 'user_top_tracks_mt_stream')}}
+    where synced_at = (select max(synced_at) from {{ source('spotify_source', 'user_top_tracks_mt_stream')}})
 ),
 artist_name_list_to_string as (
     {{ artist_array_pivot('user_top_tracks_medium_term') }}

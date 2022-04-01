@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: spotify
+  - name: spotify_source
     schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
     description: Data sync'd from Spotify.
     tables:

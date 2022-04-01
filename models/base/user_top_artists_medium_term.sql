@@ -3,8 +3,8 @@
 with user_top_artists_medium_term as (
     select
         * 
-    from "{{var('schema')}}".user_top_artists_mt_stream
-    where synced_at = (select max(synced_at) from "{{var('schema')}}".global_top_tracks_daily_stream)
+    from {{ source('spotify_source', 'user_top_artists_mt_stream')}}
+    where synced_at = (select max(synced_at) from {{ source('spotify_source', 'user_top_artists_mt_stream')}})
 ),
 final as (
     select
