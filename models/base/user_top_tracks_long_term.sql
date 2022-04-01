@@ -6,19 +6,8 @@ with user_top_tracks_long_term as (
     from "{{var('schema')}}".user_top_tracks_lt_stream
     where synced_at = (select max(synced_at) from "{{var('schema')}}".global_top_tracks_daily_stream)
 ),
-artist_name_list as (
-    select
-        id
-        , array_to_json(array_agg(items.name)) as artist_name
-    from user_top_tracks_long_term uttst, jsonb_to_recordset(uttst.artists) as items(name text)
-    group by id
-),
 artist_name_list_to_string as (
-    select
-        id
-        , string_agg(artist_name_string, ', ') as artist_name
-    from artist_name_list, jsonb_array_elements_text(artist_name::jsonb) artist_name_string
-    group by id
+    {{ artist_array_pivot('user_top_tracks_long_term') }}
 ),
 final as (
     select

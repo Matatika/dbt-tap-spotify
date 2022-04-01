@@ -1,138 +1,8 @@
 version: 2
 
-sources:
-  - name: spotify
-    schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
-    description: Data sync'd from Spotify.
-    tables:
-      - name: user_top_tracks_st_stream
-        columns:
-          - name: id
-            description: Track ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: user_top_tracks_mt_stream
-        columns:
-          - name: id
-            description: Track ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: user_top_tracks_lt_stream
-        columns:
-          - name: id
-            description: Track ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: user_top_artists_st_stream
-        columns:
-          - name: id
-            description: Artist ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: user_top_artists_mt_stream
-        columns:
-          - name: id
-            description: Artist ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: user_top_artists_lt_stream
-        columns:
-          - name: id
-            description: Artist ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: global_top_tracks_daily_stream
-        columns:
-          - name: id
-            description: Track ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: global_top_tracks_weekly_stream
-        columns:
-          - name: id
-            description: Track ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
-      - name: global_viral_tracks_daily_stream
-        columns:
-          - name: id
-            description: Track ID
-            tests:
-              - not_null
-          - name: rank
-            description: Rank of the returned record
-            tests:
-              - not_null
-          - name: synced_at
-            description: Timestamp of when the record was synced
-            tests:
-              - not_null
 models:
   - name: user_top_tracks_short_term
+    description: User's top tracks, short term.
     columns:
       - name: track_id
         description: Track ID
@@ -148,7 +18,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: user_top_tracks_medium_term
+    description: User's top tracks, medium term.
     columns:
       - name: track_id
         description: Track ID
@@ -164,7 +40,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: user_top_tracks_long_term
+    description: Users's top tracks, long term.
     columns:
       - name: track_id
         description: Track ID
@@ -180,7 +62,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: global_viral_tracks_daily
+    description: Global viral tracks daily.
     columns:
       - name: track_id
         description: Track ID
@@ -196,7 +84,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: global_top_tracks_daily
+    description: Global top tracks daily
     columns:
       - name: track_id
         description: Track ID
@@ -212,7 +106,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: global_top_tracks_weekly
+    description: Global top tracks weekly
     columns:
       - name: track_id
         description: Track ID
@@ -228,7 +128,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: user_top_artists_short_term
+    description: User top artists, short term.
     columns:
       - name: artist_id
         description: Artist ID
@@ -240,7 +146,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: user_top_artists_medium_term
+    description: User top artists, medium term.
     columns:
       - name: artist_id
         description: Artist ID
@@ -252,7 +164,13 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
+          - not_null
+
   - name: user_top_artists_long_term
+    description: User top artists, long term
     columns:
       - name: artist_id
         description: Artist ID
@@ -263,4 +181,8 @@ models:
         description: Rank of the returned record
         tests:
           - unique
+          - not_null
+      - name: artist_name
+        description: Name of artists on the track
+        tests:
           - not_null

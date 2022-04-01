@@ -1,0 +1,150 @@
+version: 2
+
+sources:
+  - name: spotify
+    schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
+    description: Data sync'd from Spotify.
+    tables:
+      - name: user_top_tracks_st_stream
+        description: Source table for user top tracks short term.
+        columns:
+          - name: id
+            description: Track ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: user_top_tracks_mt_stream
+        description: Source table for user top tracks medium term.
+        columns:
+          - name: id
+            description: Track ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: user_top_tracks_lt_stream
+        description: Source table for user top tracks long term.
+        columns:
+          - name: id
+            description: Track ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: user_top_artists_st_stream
+        description: Source table for user top artists short term.
+        columns:
+          - name: id
+            description: Artist ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: user_top_artists_mt_stream
+        description: Source table for user top artists medium term.
+        columns:
+          - name: id
+            description: Artist ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: user_top_artists_lt_stream
+        description: Source table for user top artists long term.
+        columns:
+          - name: id
+            description: Artist ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: global_top_tracks_daily_stream
+        description: Source table for global top tracks daily.
+        columns:
+          - name: id
+            description: Track ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: global_top_tracks_weekly_stream
+        description: Source table for global top tracks weekly
+        columns:
+          - name: id
+            description: Track ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null
+
+      - name: global_viral_tracks_daily_stream
+        description: Source table for viral tracks daily.
+        columns:
+          - name: id
+            description: Track ID
+            tests:
+              - not_null
+          - name: rank
+            description: Rank of the returned record
+            tests:
+              - not_null
+          - name: synced_at
+            description: Timestamp of when the record was synced
+            tests:
+              - not_null

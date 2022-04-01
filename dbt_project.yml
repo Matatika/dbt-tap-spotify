@@ -21,4 +21,4 @@ models:
       materialized: table
 
 vars:
-  schema: "{{ env_var('DBT_TARGET_SCHEMA') }}" # the schema where the raw Spotify tables are located
+  schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
