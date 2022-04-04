@@ -186,3 +186,12 @@ models:
         description: Name of artists on the track
         tests:
           - not_null
+
+  - name: vw_top_listened_to_genre_long_term
+    description: User top genres listened to, long term
+    columns:
+      - name: genre
+        description: Music Genre
+        tests:
+          - unique
+          - not_null
