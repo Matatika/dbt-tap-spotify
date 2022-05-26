@@ -10,17 +10,13 @@ models:
           - unique
           - not_null
       - name: artist_name
-        description: String of artist(s) names
+        description: Track artist name(s)
         tests:
           - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: user_top_tracks_medium_term
@@ -32,17 +28,13 @@ models:
           - unique
           - not_null
       - name: artist_name
-        description: String of artist(s) names
+        description: Track artist name(s)
         tests:
           - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: user_top_tracks_long_term
@@ -54,17 +46,13 @@ models:
           - unique
           - not_null
       - name: artist_name
-        description: String of artist(s) names
+        description: Track artist name(s)
         tests:
           - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: global_viral_tracks_daily
@@ -76,17 +64,13 @@ models:
           - unique
           - not_null
       - name: artist_name
-        description: String of artist(s) names
+        description: Track artist name(s)
         tests:
           - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: global_top_tracks_daily
@@ -98,17 +82,13 @@ models:
           - unique
           - not_null
       - name: artist_name
-        description: String of artist(s) names
+        description: Track artist name(s)
         tests:
           - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: global_top_tracks_weekly
@@ -120,17 +100,13 @@ models:
           - unique
           - not_null
       - name: artist_name
-        description: String of artist(s) names
+        description: Track artist name(s)
         tests:
           - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: user_top_artists_short_term
@@ -141,14 +117,14 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Track artist name(s)
+        tests:
+          - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: user_top_artists_medium_term
@@ -159,14 +135,14 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Track artist name(s)
+        tests:
+          - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: user_top_artists_long_term
@@ -177,14 +153,14 @@ models:
         tests:
           - unique
           - not_null
+      - name: artist_name
+        description: Track artist name(s)
+        tests:
+          - not_null
       - name: rank
         description: Rank of the returned record
         tests:
           - unique
-          - not_null
-      - name: artist_name
-        description: Name of artists on the track
-        tests:
           - not_null
 
   - name: vw_top_listened_to_genre_long_term
