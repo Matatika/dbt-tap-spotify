@@ -19,6 +19,26 @@ This package along with the [Analyze Bundle](https://github.com/Matatika/analyze
 | [vw_top_listened_to_genre_long_term](models/base/vw_top_listened_to_genre_long_term.sql) | View of counts of genres listened to, long term |
 
 
+```mermaid
+erDiagram
+    "source.tap_spotify.spotify_source.user_top_tracks_lt_stream" }|--|{ "model.tap_spotify.user_top_tracks_long_term" : ""
+    "source.tap_spotify.spotify_source.user_top_tracks_lt_stream" }|--|{ "model.tap_spotify.user_top_tracks_long_term" : ""
+    "source.tap_spotify.spotify_source.global_viral_tracks_daily_stream" }|--|{ "model.tap_spotify.global_viral_tracks_daily" : ""
+    "source.tap_spotify.spotify_source.global_viral_tracks_daily_stream" }|--|{ "model.tap_spotify.global_viral_tracks_daily" : ""
+    "source.tap_spotify.spotify_source.user_top_tracks_mt_stream" }|--|{ "model.tap_spotify.user_top_tracks_medium_term" : ""
+    "source.tap_spotify.spotify_source.user_top_tracks_mt_stream" }|--|{ "model.tap_spotify.user_top_tracks_medium_term" : ""
+    "source.tap_spotify.spotify_source.global_top_tracks_daily_stream" }|--|{ "model.tap_spotify.global_top_tracks_daily" : ""
+    "source.tap_spotify.spotify_source.global_top_tracks_daily_stream" }|--|{ "model.tap_spotify.global_top_tracks_daily" : ""
+    "model.tap_spotify.user_top_artists_long_term" }|--|{ "model.tap_spotify.vw_top_listened_to_genre_long_term" : ""
+    "source.tap_spotify.spotify_source.user_top_artists_st_stream" }|--|{ "model.tap_spotify.user_top_artists_short_term" : ""
+    "source.tap_spotify.spotify_source.global_top_tracks_weekly_stream" }|--|{ "model.tap_spotify.global_top_tracks_weekly" : ""
+    "source.tap_spotify.spotify_source.global_top_tracks_weekly_stream" }|--|{ "model.tap_spotify.global_top_tracks_weekly" : ""
+    "source.tap_spotify.spotify_source.user_top_tracks_st_stream" }|--|{ "model.tap_spotify.user_top_tracks_short_term" : ""
+    "source.tap_spotify.spotify_source.user_top_tracks_st_stream" }|--|{ "model.tap_spotify.user_top_tracks_short_term" : ""
+    "source.tap_spotify.spotify_source.user_top_artists_lt_stream" }|--|{ "model.tap_spotify.user_top_artists_long_term" : ""
+    "source.tap_spotify.spotify_source.user_top_artists_mt_stream" }|--|{ "model.tap_spotify.user_top_artists_medium_term" : ""
+```
+
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
